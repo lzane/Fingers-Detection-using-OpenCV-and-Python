@@ -1,3 +1,5 @@
+> for people using python3 and opencv3, please check out the `lzane:py3_opencv3` branch.
+
 ## Environment
 - OS: MacOS El Capitan
 - Platform: Python 2.7.12
