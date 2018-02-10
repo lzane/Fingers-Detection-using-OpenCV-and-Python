@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import copy
 import math
-from appscript import app
+#from appscript import app
 
 # Environment:
 # OS    : Mac OS EL Capitan
@@ -92,7 +92,7 @@ while camera.isOpened():
 
         # get the coutours
         thresh1 = copy.deepcopy(thresh)
-        contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        im2,contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         length = len(contours)
         maxArea = -1
         if length > 0:
@@ -112,8 +112,9 @@ while camera.isOpened():
             isFinishCal,cnt = calculateFingers(res,drawing)
             if triggerSwitch is True:
                 if isFinishCal is True and cnt <= 2:
-                    print cnt
-                    app('System Events').keystroke(' ')  # simulate pressing blank space
+                    print (cnt)
+                    #app('System Events').keystroke(' ')  # simulate pressing blank space
+                    
 
         cv2.imshow('output', drawing)
 
@@ -122,14 +123,14 @@ while camera.isOpened():
     if k == 27:  # press ESC to exit
         break
     elif k == ord('b'):  # press 'b' to capture the background
-        bgModel = cv2.BackgroundSubtractorMOG2(0, bgSubThreshold)
+        bgModel = cv2.createBackgroundSubtractorMOG2(0, bgSubThreshold)
         isBgCaptured = 1
-        print '!!!Background Captured!!!'
+        print( '!!!Background Captured!!!')
     elif k == ord('r'):  # press 'r' to reset the background
         bgModel = None
         triggerSwitch = False
         isBgCaptured = 0
-        print '!!!Reset BackGround!!!'
+        print ('!!!Reset BackGround!!!')
     elif k == ord('n'):
         triggerSwitch = True
-        print '!!!Trigger On!!!'
+        print ('!!!Trigger On!!!')
