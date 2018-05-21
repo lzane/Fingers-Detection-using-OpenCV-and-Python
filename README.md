@@ -1,10 +1,10 @@
-> for people using python3 and opencv3, please check out the `lzane:py3_opencv3` branch.
+> for people using python2 and opencv2, please check out the [`lzane:py2_opencv2`](https://github.com/lzane/Fingers-Detection-using-OpenCV-and-Python/tree/py2_opencv2) branch.
 
 ## Environment
 - OS: MacOS El Capitan
-- Platform: Python 2.7.12
+- Platform: Python 3
 - Librarys: 
-	- OpenCV 2.4.13
+	- OpenCV 3
 	- appscript
 
 
