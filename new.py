@@ -15,6 +15,7 @@ cap_region_y_end=0.8  # start point/total width
 threshold = 60  #  BINARY threshold
 blurValue = 41  # GaussianBlur parameter
 bgSubThreshold = 50
+learningRate = 0
 
 # variables
 isBgCaptured = 0   # bool, whether the background captured
@@ -25,7 +26,7 @@ def printThreshold(thr):
 
 
 def removeBG(frame):
-    fgmask = bgModel.apply(frame)
+    fgmask = bgModel.apply(frame,learningRate=learningRate)
     # kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
     # res = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, kernel)
 
@@ -92,7 +93,7 @@ while camera.isOpened():
 
         # get the coutours
         thresh1 = copy.deepcopy(thresh)
-        im2,contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        _,contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         length = len(contours)
         maxArea = -1
         if length > 0:
