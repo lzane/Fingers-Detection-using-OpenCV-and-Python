@@ -1,5 +1,8 @@
 > for people using python2 and opencv2, please check out the [`lzane:py2_opencv2`](https://github.com/lzane/Fingers-Detection-using-OpenCV-and-Python/tree/py2_opencv2) branch.
 
+> for people using opencv4, please change line 96 in the `new.py` to `contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)` according to the [opencv api change](https://github.com/lzane/Fingers-Detection-using-OpenCV-and-Python/issues/7#issuecomment-509925971).
+
+
 ## Environment
 - OS: MacOS El Capitan
 - Platform: Python 3
